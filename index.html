@@ -2,139 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <link rel="icon" type="image/x-icon" href="Images/Logos/favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="bs/css/bootstrap.css">
-    <link rel="stylesheet" href="bs/css/mdb.css">
-    <link rel="stylesheet" href="bs/css/style.css">
-    <title>Parishka Portfolio</title>
+    <title>Parishka</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
-
-        html, body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden; /* disables scrollbar */
-        }
-
-
-        @font-face {
-            font-family: "Anton";
-            src: url("Images/Fonts/Anton-Regular.ttf") format("truetype");
-        }
-
-        @font-face {
-            font-family: "Patrick Hand";
-            src: url("Images/Fonts/PatrickHand-Regular.ttf") format("truetype");
-        }
-
-        @font-face {
-            font-family: "Point Blank";
-            src: url("Images/Fonts/PointBlank.ttf") format("truetype");
-        }
-
-        @font-face {
-            font-family: "Ubuntu Mono_R";
-            src: url("Images/Fonts/UbuntuMono-Regular.ttf") format("truetype");
-        }
-
-        @font-face {
-            font-family: "Ubuntu Mono_B";
-            src: url("Images/Fonts/UbuntuMono-Bold.ttf") format("truetype");
-        }
-
-        @font-face {
-            font-family: "Game";
-            src: url("Images/Fonts/game_over.ttf") format("truetype");
-        }
-
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-        }
-
         body {
-            background-color: #0d0d0d;
-            color: whitesmoke;
-        }
-
-        /* Center content vertically and horizontally */
-        .half-screen {
+            margin: 0;
+            padding: 0;
             height: 100vh;
+            font-family: "Pixelify Sans", sans-serif;
+            background: #0d0d0d;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-        }
-
-        /* Left side */
-        .left-side {
-            background-color: #0d0d0d;
             color: white;
         }
 
-        /* Right side */
-        .right-side {
-            background-color: white;
-            color: black;
+        h1 {
+            font-size: 60px;
+            margin-bottom: 40px;
         }
 
-        .text_front {
-            font-size: 50px;
-            font-family: "Pixelify Sans", sans-serif;
-            text-decoration: underline;
-            margin: 0;
-        }
-
-        a {
+        .btn {
+            display: block;
+            width: 260px;
+            padding: 18px 0;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 30px;
             text-decoration: none;
+            background: #FFD93D;          /* Yellow BG */
+            color: black;                 /* Black text */
+            border: 3px solid #FFD93D;    /* Yellow border */
+            border-radius: 10px;
+            transition: 0.3s ease;
         }
 
-        @media (man-width:1001px){
-            font-size: 20px;
+        .btn:hover {
+            background: black;            /* Reverse colors */
+            color: #FFD93D;
+            border-color: #FFD93D;
         }
-
-
     </style>
+
 </head>
 <body>
 
-<div style="display:flex; height:100vh;">
+    <h1>Parishka's</h1>
 
-    <!-- LEFT SIDE -->
-    <div class="half-screen left-side" style="width:50%;">
-        <a href="Ludo.html">
-            <p class="text_front">TAP HERE TO PLAY</p>
-        </a>
-    </div>
-
-    <!-- RIGHT SIDE -->
-    <div class="half-screen right-side" style="width:50%;">
-        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:5042045b-6a69-4a81-9ecf-3a80268bf419" target="_blank">
-            <p class="text_front">TAP HERE FOR RESUME</p>
-        </a>
-    </div>
-
-</div>
-
-
-
-
-
-<script src="bs/js/jquery.js"></script>
-<script>
-    var $jq = jQuery.noConflict();
-</script>
-<script src="bs/js/popper.js"></script>
-<script src="bs/js/bootstrap.js"></script>
-<script src="bs/js/mdb.js"></script>
+    <a href="Ludo.html" class="btn">Portfolio</a>
+    <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:5042045b-6a69-4a81-9ecf-3a80268bf419" target="_blank" class="btn">Resume</a>
 
 </body>
 </html>
-
