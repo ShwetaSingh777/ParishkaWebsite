@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Images/Logos/favicon.svg">
+    <link rel="stylesheet" href="bs/css/bootstrap.css">
+    <link rel="stylesheet" href="bs/css/mdb.css">
+    <link rel="stylesheet" href="bs/css/style.css">
+
+    <title>Parishka | Daddy's Home</title>
+
+    <style>
+        /* ------------------------- FONTS ------------------------- */
+        @font-face {
+            font-family: "Anton";
+            src: url("Images/Fonts/Anton-Regular.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Patrick Hand";
+            src: url("Images/Fonts/PatrickHand-Regular.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Point Blank";
+            src: url("Images/Fonts/PointBlank.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Ubuntu Mono_R";
+            src: url("Images/Fonts/UbuntuMono-Regular.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Ubuntu Mono_B";
+            src: url("Images/Fonts/UbuntuMono-Bold.ttf") format("truetype");
+        }
+
+        /* ------------------------- GLOBAL ------------------------- */
+        html, body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Anton', sans-serif;
+            color: #eeecec;
+            overflow-x: hidden;      /* kill horizontal scroll everywhere */
+        }
+
+        /* ------------------------- HERO IMAGE ------------------------- */
+        .hero-image img {
+            width: 100%;
+            display: block;
+        }
+
+        /* ------------------------- LEFT STRIP ------------------------- */
+        .left-strip {
+            background: white;
+            border-right: 3px solid #0b4297;
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+            background-image: linear-gradient(#0b4297 5px, transparent 5px);
+            background-size: 100% 100px;
+            background-repeat: repeat-y;
+        }
+
+        /* ------------------------- FLOATING PLAYER ------------------------- */
+        .player-floating {
+            position: fixed;
+            bottom: 50px;
+            width: 100px;
+        }
+        .player-floating img {
+            width: 100%;
+        }
+
+        /* ------------------------- CONTENT ------------------------- */
+        .case-wrapper {
+            display: grid;
+            grid-template-columns: 100px auto;
+            width: 100%;
+        }
+
+        .case-content {
+            width: 100%;
+            padding: 50px 50px !important;
+            background: #0b4297 !important;
+            margin: 0 auto;
+        }
+
+        .case-content img {
+            width: 100%;
+            margin: 20px 0;
+            display: block;
+        }
+
+        /* ------------------------- TYPOGRAPHY ------------------------- */
+        h1, h2 {
+            font-family: 'Anton';
+            margin: 25px 0;
+            font-size: 60px !important;
+            line-height: 0.5;
+        }
+        p {
+            font-family: 'Ubuntu Mono_R';
+            font-size: 20px !important;
+
+        }
+
+        /* ------------------------- SPACING CLASSES ------------------------- */
+        .margin_below { margin-bottom: 45px !important; }
+        .icons_padding { padding: 80px;}
+        .table_icons { height: 70px !important;
+            width: auto !important;}
+        .big_idea { padding: 200px !important; }
+        .naming { padding: 120px; }
+
+
+        .foundation {
+            position: relative;
+            padding: 0 30px; /* safe padding */
+        }
+
+        /* vertical line on all except last */
+        .foundation:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: #fff; /* white line */
+        }
+
+
+
+
+        /* ------------------------- NEXT SECTION ------------------------- */
+        .next-section {
+            background: #0b4297;
+            padding-top: 20px;
+            padding-bottom: 0px;
+            padding-right: 40px;
+            padding-left: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 3px solid #fff;
+        }
+        .next-text {
+            font-size: 45px;
+            font-family: 'Anton';
+        }
+        .next-icons {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0px !important;
+        }
+        .next-icons img {
+            width: 100px;
+            height: auto;
+        }
+
+        .portfolio-title {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            z-index: 999999;
+
+            font-family: 'Anton', sans-serif;
+            font-size: 40px;
+            color: #ffffff;
+            text-decoration: none;
+            line-height: 1;
+
+            background: #0b4297;           /* 🔴 solid red box */
+            padding: 8px 8px;
+            border-radius: 0px;
+
+        }
+
+        .portfolio-title:hover {
+            opacity: 0.9;
+        }
+
+        .challenge{
+            width: 600px !important;
+            align-content: center !important;
+            align-items: center !important;
+            justify-content: center !important;
+            margin-bottom: 50px !important;
+        }
+
+        /* smooth animation */
+        .next-icons img {
+            transition: transform 0.25s ease;
+            cursor: pointer;
+        }
+
+        /* hover grows the icon */
+        .next-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        /* click (active state) grows a bit more */
+        .next-icons img:active {
+            transform: scale(1.3);
+        }
+
+
+        @media (min-width: 769px) and (max-width: 1200px) {
+            .left-strip{
+                background-image: linear-gradient(#0b4297 4px, transparent 4px) !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .left-strip{
+                background-image: linear-gradient(#0b4297 2px, transparent 2px) !important;
+            }
+        }
+
+
+    </style>
+
+    <link rel="stylesheet" media="(min-width:769px) and (max-width:1200px)" href="laptop.css">
+
+    <link rel="stylesheet" media="(max-width:768px)" href="mobile.css">
+
+</head>
+<body>
+<div class="portfolio">
+    <a href="index.html" class="portfolio-title">Parishka’s <br> Portfolio</a>
+</div>
+
+<!-- HERO IMAGE -->
+<div class="hero-image">
+    <img src="Images/KINFEY/SLIDE_01.png" width="100%">
+</div>
+
+
+<!-- MAIN WRAPPER -->
+<div class="case-wrapper">
+
+    <!-- WHITE STRIP -->
+    <div class="left-strip">
+
+        <!-- FLOATING PLAYER ON STRIP -->
+        <div class="player-floating">
+            <img src="Images/KINFEY/PLAYER.png" alt="">
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE CONTENT -->
+    <div class="case-content">
+
+        <div class="margin_below">
+            <p>
+                Kinfey was this fiesty 20 year old who won every rap battle he’d stepped into. But he
+                was yet to make a name for himself. When he got a solo gig at Kalindi college’s diwali
+                fest, we knew that this was his chance to drop bars which would stay with the people.
+            </p>
+        </div>
+
+        <div class="margin_below">
+            <h1>ROLE</h1>
+            <p>  Event positioning <br>
+                Visual direction <br>
+                Artist profiling <br>
+                Social calendar <br>
+                Art direction <br>
+                Crowd engagement <br>
+                Event coverage coordination <br>
+                Post-event wrap-up content
+        </div>
+
+        <div class="margin_below">
+            <h1>CHALLENGE</h1>
+            <p>
+                A DHH artist at an all girls college. Barely any female students carried a taste for desi
+                hip hop. There was a strong chance that the artist and the music would not be adopted.</p>
+            <img src="Images/KINFEY/SLIDE_02.png" class="challenge">
+
+        </div>
+
+
+        <div class="margin_below">
+            <h1>SOLUTION </h1>
+            <p>
+
+                Help them adapt to it visually first: this was done using posters that popped. And
+                made it look like an established artist was about to set foot in the kalindi premises.
+            </p>
+            <div class="row">
+                <div class="col-12 col-md-4 row_margin_right">
+                    <img src="Images/KINFEY/SLIDE_03A.png">
+                </div>
+                <div class="col-12 col-md-4 row_margin_right">
+                    <img src="Images/KINFEY/SLIDE_03B.png">
+                </div>
+                <div class="col-12 col-md-4 row_margin_right">
+                    <img src="Images/KINFEY/SLIDE_03C.png">
+                </div>
+            </div>
+            <p>
+                We showed up to the venue a day before the event and spread the posters evenly across
+                the campus. Then we put out a teaser on social media along with the same poster, which
+                was reposted by the official handle of kalindi college.
+            </p>
+            <div class="row">
+                <div class="col-12 col-md-6 row_margin_right">
+                    <img src="Images/KINFEY/SLIDE_04A.png">
+                </div>
+                <div class="col-12 col-md-6 row_margin_right">
+                    <img src="Images/KINFEY/SLIDE_04B.png">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-4 row_margin_right">
+                    <img src="Images/KINFEY/SLIDE_04C.png">
+                </div>
+                <div class="col-12 col-md-4 row_margin_right">
+                    <img src="Images/KINFEY/SLIDE_04D.png">
+                </div>
+                <div class="col-12 col-md-4 row_margin_right">
+                    <img src="Images/KINFEY/SLIDE_04E.png">
+                </div>
+            </div>
+
+            <p>
+                One the day of the event, funky business cards following the same theme as the posters
+                were distributed by placing volunteers at the entry gate who handed a card to every
+                person who stepped in. The card bore Kinfey’s album art on one side and a QR leading
+                to all his music on the other side
+            </p>
+            <div class="row">
+                <div class="col-12 col-md-6 row_margin_right">
+                    <img src="Images/KINFEY/SLIDE_05A.png">
+                </div>
+                <div class="col-12 col-md-6 row_margin_right">
+                    <img src="Images/KINFEY/SLIDE_05B.png">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="margin_below">
+            <h1>OUTCOME</h1>
+            <p>
+                By the time Kinfey took the stage, the crowd already knew his name. What started as
+                skepticism turned into energy — students vibed, sang along, and shared his performance
+                online. The campaign not only built recognition but also positioned Kinfey as a
+                breakout artist beyond college circuits.
+            </p>
+            <img src="Images/KINFEY/SLIDE_06.png">
+            <div class="row">
+                <div class="col-12 col-md-6 row_margin_right">
+                    <img src="Images/KINFEY/SLIDE_07A.png">
+                </div>
+                <div class="col-12 col-md-6 row_margin_right">
+                    <img src="Images/KINFEY/SLIDE_07B.png">
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <!-- NEXT SECTION -->
+        <div class="next-section">
+            <div class="next-text"><h1>NEXT →</h1></div>
+            <div class="next-icons">
+                <a href="Jumpp.html">
+                    <img src="Images/Home_Page/BLUE_03.png"  alt="">
+                </a>
+                <a href="BandarGround_M.html">
+                    <img src="Images/Home_Page/BLUE_01.png" alt="">
+                </a>
+                <a href="Indian_Express.html">
+                    <img src="Images/Home_Page/GREEN_01.png" alt="">
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="bs/js/jquery.js"></script>
+<script>
+    var $jq = jQuery.noConflict();
+</script>
+<script src="bs/js/popper.js"></script>
+<script src="bs/js/bootstrap.js"></script>
+<script src="bs/js/mdb.js"></script>
+
+
+
+
+</body>
+</html>
+

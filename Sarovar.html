@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Images/Logos/favicon.svg">
+    <link rel="stylesheet" href="bs/css/bootstrap.css">
+    <link rel="stylesheet" href="bs/css/mdb.css">
+    <link rel="stylesheet" href="bs/css/style.css">
+
+    <title>Parishka | Sarovar Portico</title>
+
+    <style>
+        /* ------------------------- FONTS ------------------------- */
+        @font-face {
+            font-family: "Anton";
+            src: url("Images/Fonts/Anton-Regular.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Patrick Hand";
+            src: url("Images/Fonts/PatrickHand-Regular.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Point Blank";
+            src: url("Images/Fonts/PointBlank.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Ubuntu Mono_R";
+            src: url("Images/Fonts/UbuntuMono-Regular.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Ubuntu Mono_B";
+            src: url("Images/Fonts/UbuntuMono-Bold.ttf") format("truetype");
+        }
+
+        /* ------------------------- GLOBAL ------------------------- */
+        html, body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Anton', sans-serif;
+            color: #eeecec;
+            overflow-x: hidden;      /* kill horizontal scroll everywhere */
+        }
+
+        /* ------------------------- HERO IMAGE ------------------------- */
+        .hero-image img {
+            width: 100%;
+            display: block;
+        }
+
+        /* ------------------------- LEFT STRIP ------------------------- */
+        .left-strip {
+            background: white;
+            border-right: 3px solid #ce931d;
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+            background-image: linear-gradient(#ce931d 5px, transparent 5px);
+            background-size: 100% 100px;
+            background-repeat: repeat-y;
+        }
+
+        /* ------------------------- FLOATING PLAYER ------------------------- */
+        .player-floating {
+            position: fixed;
+            bottom: 50px;
+            width: 100px;
+        }
+        .player-floating img {
+            width: 100%;
+        }
+
+        /* ------------------------- CONTENT ------------------------- */
+        .case-wrapper {
+            display: grid;
+            grid-template-columns: 100px auto;
+            width: 100%;
+        }
+
+        .case-content {
+            width: 100%;
+            padding: 50px 50px !important;
+            background: #ce931d !important;
+            margin: 0 auto;
+        }
+
+        .case-content img {
+            width: 100%;
+            margin: 20px 0;
+            display: block;
+        }
+
+        /* ------------------------- TYPOGRAPHY ------------------------- */
+        h1, h2 {
+            font-family: 'Anton';
+            margin: 25px 0;
+            font-size: 60px !important;
+            line-height: 0.5;
+        }
+        p {
+            font-family: 'Ubuntu Mono_R';
+            font-size: 20px !important;
+
+        }
+
+        /* ------------------------- SPACING CLASSES ------------------------- */
+        .margin_below { margin-bottom: 45px !important; }
+        .icons_padding { padding: 40px;}
+        .table_icons { height: 70px !important;
+            width: auto !important;}
+        .big_idea { padding: 80px !important; }
+        .naming { padding: 50px; }
+
+
+        .foundation {
+            position: relative;
+            padding: 0 30px; /* safe padding */
+        }
+
+        /* vertical line on all except last */
+        .foundation:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: #fff; /* white line */
+        }
+
+        .case-content video {
+            width: 100% !important;
+            height: auto !important;
+            display: block;
+            object-fit: cover;
+        }
+
+
+
+
+
+        /* ------------------------- NEXT SECTION ------------------------- */
+        .next-section {
+            background: #ce931d;
+            padding-top: 20px;
+            padding-bottom: 0px;
+            padding-right: 40px;
+            padding-left: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 3px solid #fff;
+        }
+        .next-text {
+            font-size: 45px;
+            font-family: 'Anton';
+        }
+        .next-icons {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0px !important;
+        }
+        .next-icons img {
+            width: 100px;
+            height: auto;
+        }
+
+        .portfolio-title {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            z-index: 999999;
+
+            font-family: 'Anton', sans-serif;
+            font-size: 40px;
+            color: #ffffff;
+            text-decoration: none;
+            line-height: 1;
+
+            background: #ce931d;           /* 🔴 solid red box */
+            padding: 8px 8px;
+            border-radius: 0px;
+
+        }
+
+        .portfolio-title:hover {
+            opacity: 0.9;
+        }
+
+        /* smooth animation */
+        .next-icons img {
+            transition: transform 0.25s ease;
+            cursor: pointer;
+        }
+
+        /* hover grows the icon */
+        .next-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        /* click (active state) grows a bit more */
+        .next-icons img:active {
+            transform: scale(1.3);
+        }
+
+        .linked_text{
+            color: whitesmoke;
+            text-decoration: underline;
+        }
+
+
+
+        @media (min-width: 769px) and (max-width: 1200px) {
+            .left-strip{
+                background-image: linear-gradient(#ce931d 4px, transparent 4px) !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .left-strip{
+                background-image: linear-gradient(#ce931d 2px, transparent 2px) !important;
+            }
+        }
+
+
+    </style>
+
+    <link rel="stylesheet" media="(min-width:769px) and (max-width:1200px)" href="laptop.css">
+
+    <link rel="stylesheet" media="(max-width:768px)" href="mobile.css">
+
+</head>
+<body>
+<div class="portfolio">
+    <a href="index.html" class="portfolio-title">Parishka’s <br> Portfolio</a>
+</div>
+
+<!-- HERO IMAGE -->
+<div class="hero-image">
+    <img src="Images/SAROVAR/SLIDE_01.png" width="100%">
+</div>
+
+
+<!-- MAIN WRAPPER -->
+<div class="case-wrapper">
+
+    <!-- WHITE STRIP -->
+    <div class="left-strip">
+
+        <!-- FLOATING PLAYER ON STRIP -->
+        <div class="player-floating">
+            <img src="Images/SAROVAR/PLAYER.png" alt="">
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE CONTENT -->
+    <div class="case-content">
+
+        <div class="margin_below">
+            <h1>ROLE</h1>
+            <p> Visual reframing <br>
+                Shoot direction <br>
+                Experience mapping <br>
+                Social media narrative <br>
+                Moodboard development <br>
+                Visual consistency
+        </div>
+
+        <div class="margin_below">
+            <h1>PROBLEM</h1>
+            <p> Sarovar Portico Birgunj, a luxury property located in a non-picturesque industrial area,
+                faced a unique challenge — how do you sell serenity and sophistication when the setting
+                itself doesn’t support it? </p>
+            <img src="Images/SAROVAR/SLIDE_02.png">
+        </div>
+
+        <div class="margin_below">
+            <h1>THE TASK</h1>
+            <p>
+                The task was to reposition the hotel through content and visual strategy in a way that
+                highlighted its warmth, service, and premium experience while concealing the limitations
+                of its location and infrastructure.
+            </p>
+        </div>
+
+        <div class="margin_below">
+            <h1>SOLUTION</h1>
+            <img src="Images/SAROVAR/SOLUTION.png" class="naming">
+        </div>
+
+        <div class="margin_below">
+            <h1>THE CAMPAIGN</h1>
+            <p>
+                The campaign captured these sensory details to emphasize comfort, sophistication, and
+                premium service quality through selective framing, close-up lifestyle imagery, and
+                ambience-driven storytelling. By spotlighting curated spaces, event setups, and the
+                quiet elegance of hospitality moments, we crafted a digital presence that aligned
+                Sarovar Portico Birgunj with the brand’s larger luxury narrative — transforming
+                limitation into allure.
+            </p>
+            <div class="row">
+                <div class="col-md-4 row_margin_right">
+                    <img src="Images/SAROVAR/SLIDE_03A.png">
+                </div>
+                <div class="col-md-4 row_margin_right">
+                    <img src="Images/SAROVAR/SLIDE_03B.png">
+                </div>
+                <div class="col-md-4 row_margin_right">
+                    <img src="Images/SAROVAR/SLIDE_03C.png">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 row_margin_right">
+                    <img src="Images/SAROVAR/SLIDE_04A.png">
+                </div>
+                <div class="col-md-4 row_margin_right">
+                    <img src="Images/SAROVAR/SLIDE_04B.png">
+                </div>
+                <div class="col-md-4 row_margin_right">
+                    <img src="Images/SAROVAR/SLIDE_04C.png">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="margin_below">
+            <h1>OUTCOME</h1>
+            <p>
+                A refined digital identity that elevated the hotel’s perception, attracting corporate
+                bookings and aligning Sarovar Portico Birgunj with the tone of a modern luxury brand
+                despite its contextual limitations
+            </p>
+            <a href="https://www.instagram.com/sarovarporticobirgunj/" target="_blank">
+                <p class="linked_text">
+                    Tap for Sarovar's Instagram
+                </p>
+            </a>
+
+            <div class="row">
+                <div class="col-md-6 row_margin_right">
+                    <img src="Images/SAROVAR/SLIDE_05A.png">
+                </div>
+                <div class="col-md-6 row_margin_right">
+                    <img src="Images/SAROVAR/SLIDE_05B.png">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 row_margin_right">
+                    <video autoplay loop muted playsinline>
+                        <source src="Images/SAROVAR/SLIDE_06A.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="col-md-4 row_margin_right">
+                    <video autoplay loop muted playsinline>
+                        <source src="Images/SAROVAR/SLIDE_06B.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="col-md-4 row_margin_right">
+                    <video autoplay loop muted playsinline>
+                        <source src="Images/SAROVAR/SLIDE_06C.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+        <!-- NEXT SECTION -->
+        <div class="next-section">
+            <div class="next-text"><h1>NEXT →</h1></div>
+            <div class="next-icons">
+                <a href="DaddysHome.html">
+                    <img src="Images/Home_Page/YELLOW_01.png"  alt="">
+                </a>
+                <a href="Hilti.html">
+                    <img src="Images/Home_Page/YELLOW_02.png" alt="">
+                </a>
+                <a href="BandarGround_M.html">
+                    <img src="Images/Home_Page/BLUE_01.png" alt="">
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="bs/js/jquery.js"></script>
+<script>
+    var $jq = jQuery.noConflict();
+</script>
+<script src="bs/js/popper.js"></script>
+<script src="bs/js/bootstrap.js"></script>
+<script src="bs/js/mdb.js"></script>
+
+
+
+
+</body>
+</html>
+

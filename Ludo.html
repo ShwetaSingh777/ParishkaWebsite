@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Images/Logos/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bs/css/bootstrap.css">
+    <link rel="stylesheet" href="bs/css/mdb.css">
+    <link rel="stylesheet" href="bs/css/style.css">
+    <title>Parishka Portfolio</title>
+
+    <style>
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* disables scrollbar */
+        }
+
+
+        @font-face {
+            font-family: "Anton";
+            src: url("Images/Fonts/Anton-Regular.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "Patrick Hand";
+            src: url("Images/Fonts/PatrickHand-Regular.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "Point Blank";
+            src: url("Images/Fonts/PointBlank.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "Ubuntu Mono_R";
+            src: url("Images/Fonts/UbuntuMono-Regular.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "Ubuntu Mono_B";
+            src: url("Images/Fonts/UbuntuMono-Bold.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "Game";
+            src: url("Images/Fonts/game_over.ttf") format("truetype");
+        }
+
+        /* Continuous marquee wrapper */
+        .marquee-bar {
+            background: #000;
+            color: #efeded;
+
+
+            font-family: "Pixelify Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400px;
+            font-style: normal;
+
+            font-size: 25px;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        /* Container with 2 copies of text */
+        .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll-left 18s linear infinite; /* speed */
+        }
+
+        /* Duplicate text block */
+        .marquee-content span {
+            padding-right: 3rem; /* spacing between repeats */
+        }
+
+        /* Keyframes for smooth continuous scrolling */
+        @keyframes scroll-left {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+
+
+        /* ----------------- Quadrants Container ------------------ */
+        .quad-container {
+            width: 100vw;
+            height: 90vh;          /* remaining screen height */
+            display: grid;
+            grid-template-columns: 0.5fr 0.5fr;
+            grid-template-rows: 45vh 45vh;  /* EXACT HEIGHTS */
+            position: relative;
+        }
+
+        /* Quadrants */
+        .quad {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+            color: #fff;
+            position: relative;
+        }
+
+        .red { background: #a5211c !important; }
+        .yellow { background: #ce931d !important; }
+        .green { background: #135633 !important; }
+        .blue { background: #204a92 !important; }
+
+        /* ----------------- Content Block ------------------ */
+        /* Each quadrant’s content container */
+        .content-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding-top: 0px !important;
+        }
+
+        /* This holds the players horizontally */
+        .players-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 45px;
+        }
+
+
+        .player img {
+            width: 100px;
+            height: auto;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .player img:hover {
+            transform: scale(1.15);
+        }
+
+        .player p {
+            margin-top: 5px;
+            font-family: 'Anton', sans serif;
+            font-size: 18px;
+            color: white;
+        }
+
+        .below {
+            margin-top: 20px;
+            font-size: 40px;
+            font-family: 'Anton', sans serif;
+        }
+
+        .above{
+            font-size: 40px;
+            font-family: 'Anton', sans serif;
+        }
+
+
+
+        /* Center image must adjust to new grid height */
+        /* Hover text styling */
+        .center-photo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            border-radius: 50%;
+        }
+
+        .center-photo img {
+            width: 230px;
+            height: 230px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid white;
+            transition: opacity 0.4s ease;
+        }
+
+        /* Hidden text */
+        .hover-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-family: "Pixelify Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400px;
+            font-style: normal;
+            font-size: 50px;
+            line-height: 1 !important;
+            color: white;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        /* On hover → hide image + show text */
+        .center-photo:hover img {
+            opacity: 0.15;   /* fade but keep silhouette */
+        }
+
+        .center-photo:hover .hover-text {
+            opacity: 1;
+        }
+
+
+
+        @media (min-width:1001px) {
+            .quad-container {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                grid-template-rows: 1fr 1fr !important;
+                height: calc(100vh - 60px) !important;
+            }
+        }
+
+        /* ------------------ REAL MOBILE FIX (2×2 grid) ------------------ */
+        @media (max-width: 768px) {
+
+            html, body {
+                overflow: hidden !important;  /* Keep full screen without scrolling */
+            }
+
+
+            .quad-container {
+                grid-template-columns: 1fr 1fr !important;
+                grid-template-rows: 45vh 45vh !important;
+                height: 90vh !important;
+            }
+
+            .quad {
+                padding: 10px !important;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .players-row .player {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;      /* force equal width columns */
+            }
+
+            .marquee-bar {
+
+                font-size: 40px;
+
+            }
+
+
+
+            /* Default mobile grid: 2×2 */
+            .players-row {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto;
+                gap: 15px;
+                width: 100%;
+                justify-items: center;
+                align-items: center;
+            }
+
+            /* ---------------- RED (unchanged) ---------------- */
+            /* No changes needed for red quadrant */
+
+            /* ---------------- YELLOW QUADRANT ---------------- */
+            /* 2 on top, 1 on bottom RIGHT */
+            .yellow .players-row .player:nth-child(1) {
+                grid-column: 1;
+                grid-row: 1;
+            }
+            .yellow .players-row .player:nth-child(2) {
+                grid-column: 2;
+                grid-row: 1;
+            }
+            .yellow .players-row .player:nth-child(3) {
+                grid-column: 2;   /* bottom right */
+                grid-row: 2;
+            }
+
+            /* ---------------- GREEN QUADRANT ---------------- */
+            /* 1 top-left, 2 below */
+            .green .players-row .player:nth-child(1) {
+                grid-column: 1;
+                grid-row: 1;
+            }
+            .green .players-row .player:nth-child(2) {
+                grid-column: 1;
+                grid-row: 2;
+            }
+            .green .players-row .player:nth-child(3) {
+                grid-column: 2;
+                grid-row: 2;
+            }
+
+            /* ---------------- BLUE QUADRANT ---------------- */
+            /* 1 top-right, 2 below */
+            .blue .players-row .player:nth-child(1) {
+                grid-column: 2;  /* top-right */
+                grid-row: 1;
+            }
+            .blue .players-row .player:nth-child(2) {
+                grid-column: 1;  /* bottom-left */
+                grid-row: 2;
+            }
+            .blue .players-row .player:nth-child(3) {
+                grid-column: 2;  /* bottom-right */
+                grid-row: 2;
+            }
+
+
+
+
+            /* make icons smaller */
+            .player img {
+                width: 60px !important;
+            }
+
+            .player p {
+                font-size: 12px !important;
+            }
+
+            .below {
+                font-size: 24px !important;
+                margin-top: 5px !important;
+            }
+
+            .above{
+                font-size: 24px !important;
+                margin-top: 0px !important;
+            }
+
+            .center-photo {
+                position: absolute;
+                top: 50%;     /* perfect midpoint between top quadrants */
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 999;
+            }
+
+            .center-photo img {
+                width: 100px !important;
+                height: 100px !important;
+                border-width: 6px !important;
+            }
+
+            /* No hover on mobile */
+            .hover-text {
+                display: none !important;
+            }
+
+        }
+
+        /* ------------------ TABLET / SMALL LAPTOP (769px–1100px) ------------------ */
+        @media (min-width: 769px) and (max-width: 1100px) {
+
+            html, body {
+                overflow: hidden !important;
+            }
+
+            .quad-container {
+                grid-template-columns: 1fr 1fr !important;
+                grid-template-rows: 45vh 45vh !important;
+                height: 90vh !important;
+            }
+
+            .quad {
+                padding: 25px !important;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* Player grid stays same as mobile but bigger */
+            .players-row {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto;
+                gap: 25px;
+                width: 100%;
+                justify-items: center;
+                align-items: center;
+            }
+
+            /* Make icons bigger on tablets */
+            .player img {
+                width: 85px !important;
+            }
+
+            .player p {
+                font-size: 14px !important;
+            }
+
+            h2 {
+                font-size: 30px !important;
+                margin-top: 10px !important;
+            }
+
+            .players-row .player:nth-child(3) {
+                grid-column: 1;
+                grid-row: 2;
+            }
+
+            /* Center photo — larger than mobile */
+            .center-photo {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 999;
+            }
+
+            .center-photo img {
+                width: 150px !important;
+                height: 150px !important;
+                border-width: 6px !important;
+            }
+
+            /* No hover on tablet */
+            .hover-text {
+                display: none !important;
+            }
+        }
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+<div class="marquee-bar">
+    <div class="marquee-content">
+        <span>CLICK ON THE PLAYERS TO SEE MY WORK. </span>
+        <span>CLICK ON THE PLAYERS TO SEE MY WORK. </span>
+        <span>CLICK ON THE PLAYERS TO SEE MY WORK. </span>
+        <span>CLICK ON THE PLAYERS TO SEE MY WORK. </span>
+    </div>
+</div>
+
+
+<div class="quad-container">
+
+    <!-- RED Quadrant -->
+    <div class="quad red">
+        <div class="content-block">
+            <h2 class="above">BRAND IDENTITIES</h2>
+
+            <div class="players-row">
+                <a href="BandarGround_B.html" class="player">
+                    <img src="Images/Home_Page/RED_01.png" alt="">
+                </a>
+
+                <a href="Chhat.html" class="player">
+                    <img src="Images/Home_Page/RED_02.png" alt="">
+                </a>
+
+                <a href="Alankra.html" class="player">
+                    <img src="Images/Home_Page/RED_03.png" alt="">
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <!-- YELLOW Quadrant -->
+    <div class="quad yellow">
+        <div class="content-block">
+
+            <h2 class="above">CREATIVE STRATEGIES</h2>
+
+            <div class="players-row">
+                <a href="DaddysHome.html" class="player">
+                    <img src="Images/Home_Page/YELLOW_01.png" alt="">
+                </a>
+
+                <a href="Hilti.html" class="player">
+                    <img src="Images/Home_Page/YELLOW_02.png" alt="">
+                </a>
+
+                <a href="Sarovar.html" class="player">
+                    <img src="Images/Home_Page/YELLOW_03.png" alt="">
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <!-- GREEN Quadrant -->
+    <div class="quad green">
+        <div class="content-block">
+
+            <div class="players-row">
+                <a href="Indian_Express.html" class="player">
+                    <img src="Images/Home_Page/GREEN_01.png" alt="">
+                </a>
+
+                <a href="Outlook.html" class="player">
+                    <img src="Images/Home_Page/GREEN_02.png" alt="">
+                </a>
+
+                <a href="Travel_XP.html" class="player">
+                    <img src="Images/Home_Page/GREEN_03.png" alt="">
+                </a>
+            </div>
+
+            <h2 class="below">JOURNALISM</h2>
+        </div>
+    </div>
+
+
+    <!-- BLUE Quadrant -->
+    <div class="quad blue">
+        <div class="content-block">
+
+            <div class="players-row">
+                <a href="BandarGround_M.html" class="player">
+                    <img src="Images/Home_Page/BLUE_01.png" alt="">
+                </a>
+
+                <a href="Kinfey.html" class="player">
+                    <img src="Images/Home_Page/BLUE_02.png" alt="">
+                </a>
+
+                <a href="Jumpp.html" class="player">
+                    <img src="Images/Home_Page/BLUE_03.png" alt="">
+                </a>
+            </div>
+
+            <h2 class="below">MARKETING COMMUNICATIONS</h2>
+        </div>
+    </div>
+
+
+    <div class="center-photo">
+        <a href="About_Me.html">
+            <img src="Images/Home_Page/COVER.png" alt="profile">
+
+            <!-- Hover text -->
+            <div class="hover-text">ABOUT ME</div>
+        </a>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+<script src="bs/js/jquery.js"></script>
+<script>
+    var $jq = jQuery.noConflict();
+</script>
+<script src="bs/js/popper.js"></script>
+<script src="bs/js/bootstrap.js"></script>
+<script src="bs/js/mdb.js"></script>
+
+</body>
+</html>
+

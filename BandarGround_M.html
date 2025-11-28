@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Images/Logos/favicon.svg">
+    <link rel="stylesheet" href="bs/css/bootstrap.css">
+    <link rel="stylesheet" href="bs/css/mdb.css">
+    <link rel="stylesheet" href="bs/css/style.css">
+
+    <title>Parishka | BandarGround</title>
+
+    <style>
+        /* ------------------------- FONTS ------------------------- */
+        @font-face {
+            font-family: "Anton";
+            src: url("Images/Fonts/Anton-Regular.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Patrick Hand";
+            src: url("Images/Fonts/PatrickHand-Regular.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Point Blank";
+            src: url("Images/Fonts/PointBlank.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Ubuntu Mono_R";
+            src: url("Images/Fonts/UbuntuMono-Regular.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Ubuntu Mono_B";
+            src: url("Images/Fonts/UbuntuMono-Bold.ttf") format("truetype");
+        }
+
+        /* ------------------------- GLOBAL ------------------------- */
+        html, body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Anton', sans-serif;
+            color: #eeecec;
+            overflow-x: hidden;      /* kill horizontal scroll everywhere */
+        }
+
+        /* ------------------------- HERO IMAGE ------------------------- */
+        .hero-image img {
+            width: 100%;
+            display: block;
+        }
+
+        /* ------------------------- LEFT STRIP ------------------------- */
+        .left-strip {
+            background: white;
+            border-right: 3px solid #0b4297;
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+            background-image: linear-gradient(#0b4297 5px, transparent 5px);
+            background-size: 100% 100px;
+            background-repeat: repeat-y;
+        }
+
+        /* ------------------------- FLOATING PLAYER ------------------------- */
+        .player-floating {
+            position: fixed;
+            bottom: 50px;
+            width: 100px;
+        }
+        .player-floating img {
+            width: 100%;
+        }
+
+        /* ------------------------- CONTENT ------------------------- */
+        .case-wrapper {
+            display: grid;
+            grid-template-columns: 100px auto;
+            width: 100%;
+        }
+
+        .case-content {
+            width: 100%;
+            padding: 50px 50px !important;
+            background: #0b4297 !important;
+            margin: 0 auto;
+        }
+
+        .case-content img {
+            width: 100%;
+            margin: 20px 0;
+            display: block;
+        }
+
+        /* ------------------------- TYPOGRAPHY ------------------------- */
+        h1, h2 {
+            font-family: 'Anton';
+            margin: 25px 0;
+            font-size: 60px !important;
+            line-height: 0.5;
+        }
+        p {
+            font-family: 'Ubuntu Mono_R';
+            font-size: 20px !important;
+
+        }
+
+        .artist-grid img {
+            width: 100%;
+            padding: 10px;
+            display: block;
+        }
+        /* ------------------------- SPACING CLASSES ------------------------- */
+        .margin_below { margin-bottom: 45px !important; }
+        .icons_padding { padding: 40px;}
+        .table_icons { height: 70px !important;
+            width: auto !important;}
+        .big_idea { padding: 80px !important; }
+        .naming { padding: 50px; }
+
+        h3{
+            font-family: 'Abrock';
+            font-size: 50px !important;
+        }
+
+
+        .foundation {
+            position: relative;
+            padding: 0 30px; /* safe padding */
+        }
+
+        /* vertical line on all except last */
+        .foundation:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: #fff; /* white line */
+        }
+
+
+
+
+        /* ------------------------- NEXT SECTION ------------------------- */
+        .next-section {
+            background: #0b4297;
+            padding-top: 20px;
+            padding-bottom: 0px;
+            padding-right: 40px;
+            padding-left: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 3px solid #fff;
+        }
+        .next-text {
+            font-size: 45px;
+            font-family: 'Anton';
+        }
+        .next-icons {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0px !important;
+        }
+        .next-icons img {
+            width: 100px;
+            height: auto;
+        }
+
+        .linking_text{
+            text-decoration: underline;
+            color: whitesmoke;
+        }
+
+        .portfolio-title {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            z-index: 999999;
+
+            font-family: 'Anton', sans-serif;
+            font-size: 40px;
+            color: #ffffff;
+            text-decoration: none;
+            line-height: 1;
+
+            background: #0b4297;           /* 🔴 solid red box */
+            padding: 8px 8px;
+            border-radius: 0px;
+
+        }
+
+        .portfolio-title:hover {
+            opacity: 0.9;
+        }
+
+        /* smooth animation */
+        .next-icons img {
+            transition: transform 0.25s ease;
+            cursor: pointer;
+        }
+
+        /* hover grows the icon */
+        .next-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        /* click (active state) grows a bit more */
+        .next-icons img:active {
+            transform: scale(1.3);
+        }
+
+        /* ---- HORIZONTAL OVERFLOW FIX FOR BANDARGROUND M PAGE ---- */
+
+        /* Ensure no child inside content can exceed viewport */
+        .case-content,
+        .case-wrapper,
+        html, body {
+            max-width: 100vw !important;
+            overflow-x: hidden !important;
+            box-sizing: border-box !important;
+        }
+
+
+        /* Images sometimes stretch due to Bootstrap grid → limit them */
+        .case-content img,
+        .case-content video {
+            max-width: 100% !important;
+            height: auto !important;
+            display: block !important;
+        }
+
+        /* The ONE real cause: your left column + padding inside case-content
+           was making width exceed viewport → subtract left strip */
+        @media (min-width: 769px) {
+            .case-content {
+                width: calc(100vw - 100px) !important;  /* left strip = 100px */
+                max-width: calc(100vw - 100px) !important;
+                overflow-x: hidden !important;
+            }
+        }
+
+        /* Also ensure hero image never overflows */
+        .hero-image img {
+            max-width: 100vw !important;
+            width: 100% !important;
+        }
+
+
+
+        @media (min-width: 769px) and (max-width: 1200px) {
+            .left-strip{
+                background-image: linear-gradient(#0b4297 4px, transparent 4px) !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .left-strip{
+                background-image: linear-gradient(#0b4297 2px, transparent 2px) !important;
+            }
+        }
+
+
+    </style>
+
+    <link rel="stylesheet" media="(min-width:769px) and (max-width:1200px)" href="laptop.css">
+
+    <link rel="stylesheet" media="(max-width:768px)" href="new_mobile.css">
+
+</head>
+<body>
+<div class="portfolio">
+    <a href="index.html" class="portfolio-title">Parishka’s <br> Portfolio</a>
+</div>
+
+<!-- HERO IMAGE -->
+<div class="hero-image">
+    <img src="Images/BANDARGROUND/SLIDE_01.png" width="100%">
+</div>
+
+
+<!-- MAIN WRAPPER -->
+<div class="case-wrapper">
+
+    <!-- WHITE STRIP -->
+    <div class="left-strip">
+
+        <!-- FLOATING PLAYER ON STRIP -->
+        <div class="player-floating">
+            <img src="Images/BANDAR_M/PLAYER.png" alt="">
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE CONTENT -->
+    <div class="case-content">
+
+        <div class="margin_below">
+            <p>
+                BandarGround is an underground desi hip hop show that I'd organized in July 2024 at
+                Akra, Lajpat Nagar, Delhi. It brought together rappers, producers, creators, and an
+                audience that lives for movement, identity, and expression.
+            </p>
+        </div>
+
+        <div class="margin_below">
+            <h1>ROLE</h1>
+            <p>  Media Partnerships <br>
+                Social Calendar <br>
+                Content Buckets <br>
+                Copywriting <br>
+
+                Visual Direction <br>
+                On-ground Coverage <br>
+                UGC Campaigns <br>
+                Tone of Voice
+        </div>
+
+        <div class="margin_below">
+            <h1>OBJECTIVE</h1>
+            <p>
+                To create hype, sell 130+ tickets, and build recall through integrated digital
+                + on-ground communication.</p>
+
+        </div>
+
+        <div class="margin_below">
+            <h1><span class="line_gap"> PRE-EVENT MARKETING </span></h1>
+            <p>
+
+                While we were ironing out the final details and locking down artists and the venue,
+                I started dropping these cryptic stories on Instagram and Whatsapp.
+                Everytime someone DMed asking for details, they were let in on the secret and were
+                bestowed with the honor of being a guardian.
+                Now every time one of these cryptic stories dropped, their job was to hit repost,
+                pass on the message to the next curious cat, and add them to insiders club.
+            </p>
+            <div class="row artist-grid">
+                <div class="col-6 col-md-3 row_margin_left">
+                    <img src="Images/BANDAR_M/SLIDE_02A.png">
+                </div>
+                <div class="col-6 col-md-3 row_margin_left">
+                    <img src="Images/BANDAR_M/SLIDE_02B.png">
+                </div>
+                <div class="col-6 col-md-3 row_margin_left">
+                    <img src="Images/BANDAR_M/SLIDE_02C.png">
+                </div>
+                <div class="col-6 col-md-3 row_margin_left">
+                    <img src="Images/BANDAR_M/SLIDE_02D.png">
+                </div>
+            </div>
+        </div>
+
+        <div class="margin_below">
+            <h1><span class="line_gap"> COLLABORATIONS & PARTNERSHIP </span></h1>
+            <p>
+
+                Partnered with Premise and Inch, Delhi-based culture platforms, to amplify reach and
+                credibility. Executed cross-platform content swaps, co-hosted media drops, and leveraged
+                their audiences for coverage. Premise even gifted us this whole documentary.
+            </p>
+
+                <a href="https://www.youtube.com/watch?v=AvkHgeypPwc&t=181s" target="_blank">
+                    <p class="linking_text">
+                        Click here to view the full video
+                    </p>
+                </a>
+
+            <video controls class="full-video">
+                <source src="Images/BANDAR_M/SLIDE_03.mp4" type="video/mp4">
+            </video>
+            <div class="row">
+                <div class="col-12 col-md-4 row_margin_right p-3">
+                    <img src="Images/BANDAR_M/SLIDE_04A.png">
+                </div>
+                <div class="col-12 col-md-4 row_margin_right p-3">
+                    <img src="Images/BANDAR_M/SLIDE_04B.png">
+                </div>
+                <div class="col-12 col-md-4 row_margin_right p-3">
+                    <img src="Images/BANDAR_M/SLIDE_04C.png">
+                </div>
+            </div>
+        </div>
+
+        <div class="margin_below">
+            <h1><span class="line_gap">USER GENERATED CONTENT</span></h1>
+            <p>
+                With our DMs flooding with fresh faces asking for a spot in the spotlight came the
+                opportunity to make these faces walking ads for the show. We also had requests from visual
+                artists looking to showcase their work on the show, so we decided to put up a softboard,
+                inviting artists to pin up their art. The board ended up serving another interesting
+                purpose: art people could take home :)
+            </p>
+            <div class="row">
+                <div class="col-12 col-md-4 row_margin_right">
+                    <img src="Images/BANDAR_M/SLIDE_05A.png">
+                </div>
+                <div class="col-12 col-md-4 row_margin_right">
+                    <img src="Images/BANDAR_M/SLIDE_05B.png">
+                </div>
+                <div class="col-12 col-md-4 row_margin_right">
+                    <img src="Images/BANDAR_M/SLIDE_05C.png">
+                </div>
+            </div>
+        </div>
+
+        <div class="margin_below">
+            <h1>MOMENT MARKETING</h1>
+            <p>
+                The desi hip-hop scene is always buzzing with beats and beefs, and we planned to ride
+                the momentum. Right before our show, Seedhe Maut dropped their fiery diss tracks TT
+                and Shutdown. With the internet burning, we used the moment to announce our show—plus
+                a discount. Ticket sales shot through the roof :)
+                Another big win came on the day India clinched the T20 World Cup by 7 runs—we sold out
+                our 777-rupee duo passes instantly. Those two days made it clear: people were glued to
+                our pages, ready to grab every discount we dropped.
+            </p>
+            <div class="row">
+                <div class="col-md-6 row_margin_right">
+                    <img src="Images/BANDAR_M/SLIDE_06A.png">
+                </div>
+                <div class="col-md-6 row_margin_right">
+                    <img src="Images/BANDAR_M/SLIDE_06B.png">
+                </div>
+            </div>
+        </div>
+
+        <div class="margin_below">
+            <h1><span class="line_gap"> MEME MARKETING </span></h1>
+            <p>
+                BandarGround stories were always bubbling with memes that triggered emotions like
+                pride, FOMO, and curiosity. The people had no choice but to screenshot and repost.
+            </p>
+            <div class="row artist-grid">
+                <div class="col-6 col-md-3 row_margin_left">
+                    <img src="Images/BANDAR_M/SLIDE_07A.png">
+                </div>
+                <div class="col-6 col-md-3 row_margin_left">
+                    <img src="Images/BANDAR_M/SLIDE_07B.png">
+                </div>
+                <div class="col-6 col-md-3 row_margin_left">
+                    <img src="Images/BANDAR_M/SLIDE_07C.png">
+                </div>
+                <div class="col-6 col-md-3 row_margin_left">
+                    <img src="Images/BANDAR_M/SLIDE_07D.png">
+                </div>
+            </div>
+        </div>
+
+        <div class="margin_below">
+            <h1>OUTCOME</h1>
+            <div class="row">
+                <div class="col-md-4 icons_padding">
+                    <h3>300+</h3>
+                    <p>Tickets Sold</p>
+                </div>
+                <div class="col-md-4 icons_padding">
+                    <h3>2L+</h3>
+                    <p>Revenue Generated</p>
+                </div>
+                <div class="col-md-4 icons_padding">
+                    <h3>1.38L+</h3>
+                    <p>People Reached</p>
+                </div>
+            </div>
+
+            <img src="Images/BANDARGROUND/SLIDE_12.png" class="image_margin_right">
+        </div>
+
+
+
+
+
+        <!-- NEXT SECTION -->
+        <div class="next-section">
+            <div class="next-text"><h1>NEXT →</h1></div>
+            <div class="next-icons">
+                <a href="BandarGround_B.html">
+                    <img src="Images/Home_Page/RED_01.png"  alt="">
+                </a>
+                <a href="Kinfey.html">
+                    <img src="Images/Home_Page/BLUE_02.png" alt="">
+                </a>
+                <a href="Jumpp.html">
+                    <img src="Images/Home_Page/BLUE_03.png" alt="">
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="bs/js/jquery.js"></script>
+<script>
+    var $jq = jQuery.noConflict();
+</script>
+<script src="bs/js/popper.js"></script>
+<script src="bs/js/bootstrap.js"></script>
+<script src="bs/js/mdb.js"></script>
+
+
+
+
+</body>
+</html>
+

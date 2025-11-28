@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Images/Logos/favicon.svg">
+    <link rel="stylesheet" href="bs/css/bootstrap.css">
+    <link rel="stylesheet" href="bs/css/mdb.css">
+    <link rel="stylesheet" href="bs/css/style.css">
+
+    <title>Parishka | NEW INDIAN EXPRESS</title>
+
+    <style>
+        /* ------------------------- FONTS ------------------------- */
+        @font-face {
+            font-family: "Anton";
+            src: url("Images/Fonts/Anton-Regular.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Patrick Hand";
+            src: url("Images/Fonts/PatrickHand-Regular.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Point Blank";
+            src: url("Images/Fonts/PointBlank.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Ubuntu Mono_R";
+            src: url("Images/Fonts/UbuntuMono-Regular.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Ubuntu Mono_B";
+            src: url("Images/Fonts/UbuntuMono-Bold.ttf") format("truetype");
+        }
+
+        /* ------------------------- GLOBAL ------------------------- */
+        html, body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Anton', sans-serif;
+            color: #eeecec;
+            overflow-x: hidden;      /* kill horizontal scroll everywhere */
+        }
+
+        /* ------------------------- HERO IMAGE ------------------------- */
+        .hero-image img {
+            width: 100%;
+            display: block;
+        }
+
+        /* ------------------------- LEFT STRIP ------------------------- */
+        .left-strip {
+            background: white;
+            border-right: 3px solid #135533;
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+            background-image: linear-gradient(#135533 5px, transparent 5px);
+            background-size: 100% 100px;
+            background-repeat: repeat-y;
+        }
+
+        /* ------------------------- FLOATING PLAYER ------------------------- */
+        .player-floating {
+            position: fixed;
+            bottom: 50px;
+            width: 100px;
+        }
+        .player-floating img {
+            width: 100%;
+        }
+
+        /* ------------------------- CONTENT ------------------------- */
+        .case-wrapper {
+            display: grid;
+            grid-template-columns: 100px auto;
+            width: 100%;
+        }
+
+        .case-content {
+            width: 100%;
+            padding: 50px 50px !important;
+            background: #135533 !important;
+            margin: 0 auto;
+        }
+
+        .case-content img {
+            width: 100%;
+            margin: 20px 0;
+            display: block;
+        }
+
+        /* ------------------------- TYPOGRAPHY ------------------------- */
+        h1, h2 {
+            font-family: 'Anton';
+            margin: 25px 0;
+            font-size: 60px !important;
+            line-height: 0.5;
+        }
+        p {
+            font-family: 'Ubuntu Mono_R';
+            font-size: 20px !important;
+
+        }
+
+        .artist-grid img {
+            width: 100%;
+            padding: 10px;
+            display: block;
+        }
+
+        /* ------------------------- SPACING CLASSES ------------------------- */
+        .margin_below { margin-bottom: 45px !important; }
+        .icons_padding { padding: 80px;}
+        .table_icons { height: 70px !important;
+            width: auto !important;}
+        .big_idea { padding: 200px !important; }
+        .naming { padding: 120px; }
+
+
+        .foundation {
+            position: relative;
+            padding: 0 30px; /* safe padding */
+        }
+
+        /* vertical line on all except last */
+        .foundation:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: #fff; /* white line */
+        }
+
+
+
+
+        /* ------------------------- NEXT SECTION ------------------------- */
+        .next-section {
+            background: #135533;
+            padding-top: 20px;
+            padding-bottom: 0px;
+            padding-right: 40px;
+            padding-left: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 3px solid #fff;
+        }
+        .next-text {
+            font-size: 45px;
+            font-family: 'Anton';
+        }
+        .next-icons {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0px !important;
+        }
+        .next-icons img {
+            width: 100px;
+            height: auto;
+        }
+
+        .portfolio-title {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            z-index: 999999;
+
+            font-family: 'Anton', sans-serif;
+            font-size: 40px;
+            color: #ffffff;
+            text-decoration: none;
+            line-height: 1;
+
+            background: #135533;           /* 🔴 solid red box */
+            padding: 8px 8px;
+            border-radius: 0px;
+
+        }
+
+        .portfolio-title:hover {
+            opacity: 0.9;
+        }
+
+        /* smooth animation */
+        .next-icons img {
+            transition: transform 0.25s ease;
+            cursor: pointer;
+        }
+
+        /* hover grows the icon */
+        .next-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        /* click (active state) grows a bit more */
+        .next-icons img:active {
+            transform: scale(1.3);
+        }
+
+        /* Smooth scale on article hover */
+        .article-card img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transform-origin: center;
+        }
+
+        .article-card:hover img {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+
+
+        .text_icons img{
+            padding: 60px !important;
+        }
+
+        .linking_text{
+            color: whitesmoke;
+            text-decoration: underline;
+        }
+
+        @media (min-width: 769px) and (max-width: 1200px) {
+            .left-strip{
+                background-image: linear-gradient(#135533 4px, transparent 4px) !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .left-strip{
+                background-image: linear-gradient(#135533 2px, transparent 2px) !important;
+            }
+        }
+
+
+
+
+
+    </style>
+
+    <link rel="stylesheet" media="(min-width:769px) and (max-width:1200px)" href="laptop.css">
+
+    <link rel="stylesheet" media="(max-width:768px)" href="mobile.css">
+
+</head>
+<body>
+<div class="portfolio">
+    <a href="index.html" class="portfolio-title">Parishka’s <br> Portfolio</a>
+</div>
+
+<!-- HERO IMAGE -->
+<div class="hero-image">
+    <img src="Images/INDIAN_EXPRESS/SLIDE_01.png" width="100%">
+</div>
+
+
+<!-- MAIN WRAPPER -->
+<div class="case-wrapper">
+
+    <!-- WHITE STRIP -->
+    <div class="left-strip">
+
+        <!-- FLOATING PLAYER ON STRIP -->
+        <div class="player-floating">
+            <img src="Images/INDIAN_EXPRESS/PLAYER.png" alt="">
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE CONTENT -->
+    <div class="case-content">
+        <div class="margin_below">
+            <p>
+                Before I ever called myself a marketer, I was a journalist learning to understand what
+                makes people listen. At The New Indian Express, I wrote about Delhi’s theatre circuits,
+                city events, and creative subcultures — stories that demanded the same things marketing
+                later would: attention to audience, emotion, and timing.
+            </p>
+        </div>
+
+        <div class="margin_below">
+            <h1>ROLE</h1>
+            <p>Covered arts, culture, theatre, lifestyle <br>
+                Interviewed creators, artists, performers <br>
+                Wrote 20K+ reach articles <br>
+                Increased digital readership by 30% <br>
+                Crafted concise, fast-turnaround stories <br>
+                Demonstrated audience understanding</p>
+        </div>
+
+        <div class="margin_below">
+            <h1><span class="line_gap"> RESEARCH PROCESS</span></h1>
+            <div class="row">
+                <div class="col-md-6 text_icons">
+                    <img src="Images/INDIAN_EXPRESS/ICON_01.png">
+                </div>
+                <div class="col-md-6 text_icons">
+                    <img src="Images/INDIAN_EXPRESS/ICON_02.png">
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 text_icons">
+                    <img src="Images/INDIAN_EXPRESS/ICON_03.png">
+                </div>
+                <div class="col-md-6 text_icons">
+                    <img src="Images/INDIAN_EXPRESS/ICON_04.png">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="margin_below">
+            <h1><span class="line_gap"> WHAT I WROTE ABOUT </span></h1>
+            <p>
+                I wrote extensively about Delhi’s vibrant arts, theatre, music, and cultural scene.
+                My work involved quick-turn event coverage, previews, and reviews, allowing me to
+                capture the city’s creative pulse in real time. I also conducted in-depth artist
+                interviews and crafted detailed profiles, offering readers a closer look into the
+                people shaping the cultural landscape. Alongside this, I explored urban culture and
+                city-life reportage, documenting the everyday rhythms, subcultures, and stories that
+                define Delhi.
+            </p>
+            <div class="row">
+                <div class="col-md-4 row_margin_right article-card">
+                    <a href="https://www.newindianexpress.com/amp/story/lifestyle/2023/jan/20/harmonies-for-the-indie-soul-2539654.html" target="_blank" rel="noopener noreferrer">
+                    <img src="Images/INDIAN_EXPRESS/SLIDE_02A.png">
+                        <p class="linking_text">Tap to Read</p>
+                    </a>
+                </div>
+                <div class="col-md-4 row_margin_right article-card">
+                    <a href="https://www.newindianexpress.com/cities/delhi/2023/Jan/14/back-to-basics-delhi-based-chefs-share-alternative-ingredients-to-make-this-festive-season-healthy-2537838.html" target="_blank" rel="noopener noreferrer">
+                    <img src="Images/INDIAN_EXPRESS/SLIDE_02B.png">
+                        <p class="linking_text">Tap to Read</p>
+                    </a>
+                </div>
+                <div class="col-md-4 row_margin_right article-card">
+                    <a href="https://www.newindianexpress.com/cities/delhi/2023/Jan/19/keep-warm-and-carry-on-2539310.html" target="_blank" rel="noopener noreferrer">
+                    <img src="Images/INDIAN_EXPRESS/SLIDE_02C.png">
+                        <p class="linking_text">Tap to Read</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="margin_below">
+            <h1><span class="line_gap">MARKETING SKILL TRANSFER</span></h1>
+            <div class="row artist-grid">
+                <div class="col-6 col-md-3">
+                    <img src="Images/INDIAN_EXPRESS/SLIDE_03A.png">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="Images/INDIAN_EXPRESS/SLIDE_03B.png">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="Images/INDIAN_EXPRESS/SLIDE_03C.png">
+                </div>
+                <div class="col-6 col-md-3 row_margin_left">
+                    <img src="Images/INDIAN_EXPRESS/SLIDE_03D.png">
+                </div>
+            </div>
+        </div>
+
+
+        <!-- NEXT SECTION -->
+        <div class="next-section">
+            <div class="next-text"><h1>NEXT →</h1></div>
+            <div class="next-icons">
+                <a href="Outlook.html">
+                    <img src="Images/Home_Page/GREEN_02.png"  alt="">
+                </a>
+                <a href="Travel_XP.html">
+                    <img src="Images/Home_Page/GREEN_03.png" alt="">
+                </a>
+                <a href="BandarGround_B.html">
+                    <img src="Images/Home_Page/RED_01.png" alt="">
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="bs/js/jquery.js"></script>
+<script>
+    var $jq = jQuery.noConflict();
+</script>
+<script src="bs/js/popper.js"></script>
+<script src="bs/js/bootstrap.js"></script>
+<script src="bs/js/mdb.js"></script>
+
+
+
+
+</body>
+</html>
+

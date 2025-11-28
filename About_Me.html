@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Images/Logos/favicon.svg">
+    <link rel="stylesheet" href="bs/css/bootstrap.css">
+    <link rel="stylesheet" href="bs/css/mdb.css">
+    <link rel="stylesheet" href="bs/css/style.css">
+    <title>Parishka Portfolio</title>
+
+    <style>
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .whole_content{
+            padding: 50px !important;
+        }
+
+
+        @font-face {
+            font-family: "Anton";
+            src: url("Images/Fonts/Anton-Regular.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "Patrick Hand";
+            src: url("Images/Fonts/PatrickHand-Regular.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "Point Blank";
+            src: url("Images/Fonts/PointBlank.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "Ubuntu Mono_R";
+            src: url("Images/Fonts/UbuntuMono-Regular.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "Ubuntu Mono_B";
+            src: url("Images/Fonts/UbuntuMono-Bold.ttf") format("truetype");
+        }
+
+        /* FIX: Ability icons stay perfect circle, never stretched */
+        .icon {
+            width: 24px !important;
+            height: 24px !important;
+            object-fit: contain !important;
+            margin-right: 12px !important;
+            margin-bottom: 10px !important;
+        }
+
+        /* FIX: Remove default bullet dots */
+        .row ul {
+            list-style: none !important;
+            padding-left: 0 !important;
+        }
+
+
+        .portfolio-title {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            z-index: 999999;
+
+            font-family: 'Anton', sans-serif;
+            font-size: 40px;
+            color: #ffffff;
+            text-decoration: none;
+            line-height: 1;
+
+            background: #a5211c;           /* 🔴 solid red box */
+            padding: 8px 8px;
+            border-radius: 0px;
+
+        }
+
+        .portfolio-title:hover {
+            opacity: 0.9;
+        }
+
+        h1, h2 {
+            font-family: 'Anton';
+            margin: 25px 0;
+            font-size: 60px !important;
+            line-height: 0.5;
+        }
+        p,li {
+            font-family: 'Ubuntu Mono_R';
+            font-size: 20px !important;
+
+        }
+
+        .intro{
+            margin-bottom: 60px;
+            max-width: 1200px !important;
+        }
+
+        .row_01{
+            color: #a5211c;
+            margin-bottom: 60px;
+        }
+
+        .row_02{
+            color: #ce931d;
+            margin-bottom: 60px;
+        }
+
+        .row_03{
+            color: #204a92;
+            margin-bottom: 60px;
+        }
+
+        .row_04{
+            color: #135633;
+
+        }
+
+
+
+
+        /* ---------------- MOBILE COLUMN ORDER FIX ---------------- */
+        @media (max-width: 768px){
+        /* Reverse order of columns in section 2 (Travel Writer) */
+        .row:nth-of-type(2) {
+            display: flex;
+            flex-direction: column-reverse !important;
+        }
+
+        /* Reverse order of columns in section 4 (Mad Woman) */
+        .row:nth-of-type(4) {
+            display: flex;
+            flex-direction: column-reverse !important;
+        }
+
+        }
+
+
+
+
+
+    </style>
+
+
+    <link rel="stylesheet" media="(min-width:769px) and (max-width:1200px)" href="laptop.css">
+
+    <link rel="stylesheet" media="(max-width:768px)" href="mobile.css">
+</head>
+<body>
+
+<div class="whole_content">
+
+<div class="portfolio">
+    <a href="index.html" class="portfolio-title">Parishka’s <br> Portfolio</a>
+</div>
+
+<section class="intro">
+    <h1>HI, I’M PARISHKA</h1>
+    <p class="intro-text">
+        and my creativity will make you money. I've been writing since 3rd grade, which got
+        me to journalism; which was accompanied with adulthood, where I first had a whiff of money.
+        Once I learnt that writing was not the only creative product I could create, I had to make
+        the best of it. Take a look at my evolution quest below:
+    </p>
+</section>
+
+
+<!-- 1 — SCRIBBLER -->
+<div class="row row_01">
+    <div class="col-md-6 text">
+        <h2>THE SCRIBBLER</h2>
+        <p>
+            When I was nothing, I was the kid married to
+            a notepad wanting to lock the essence of
+            everything everywhere all at once in words.
+            I wrote and sketched everywhere I went.
+        </p>
+
+        <ul>
+            <li><img src="Images/ABOUT_ME/RED_ICON.png" class="icon">Observation</li>
+            <li><img src="Images/ABOUT_ME/RED_ICON.png" class="icon">Voice Development</li>
+            <li><img src="Images/ABOUT_ME/RED_ICON.png" class="icon">Narrative Flow</li>
+            <li><img src="Images/ABOUT_ME/RED_ICON.png" class="icon">Idea Shaping</li>
+        </ul>
+    </div>
+
+    <div class="col-md-6">
+        <img src="Images/ABOUT_ME/SLIDE_01.png" width="100%" alt="scribbler">
+    </div>
+</div>
+
+
+<!-- 2 — TRAVEL WRITER -->
+<div class="row row_02">
+    <div class="col-md-6">
+        <img src="Images/ABOUT_ME/SLIDE_02.png" width="100%" alt="">
+    </div>
+
+    <div class="col-md-6">
+        <h2>THE TRAVEL WRITER</h2>
+        <p>
+            Travelxp was the first media corporation that
+            believed in me, followed by other media giants;
+            accompanied by a Journalism degree from Delhi
+            University. I wrote about people, places, art
+            and culture. But the Untold Stories were an
+            itch in my brain. I had to make them known and
+            unforgettable; and one article in a newspaper
+            sure as hell wasn't the way to do it.
+        </p>
+
+        <ul>
+            <li><img src="Images/ABOUT_ME/YELLOW_ICON.png" class="icon">Research depth</li>
+            <li><img src="Images/ABOUT_ME/YELLOW_ICON.png" class="icon">Interviewing</li>
+            <li><img src="Images/ABOUT_ME/YELLOW_ICON.png" class="icon">Audience insight</li>
+            <li><img src="Images/ABOUT_ME/YELLOW_ICON.png" class="icon">Story packaging</li>
+            <li><img src="Images/ABOUT_ME/YELLOW_ICON.png" class="icon">Fast Turnaround Writing</li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- 3 — SHOWRUNNER -->
+<div class="row row_03">
+    <div class="col-md-6">
+        <h2>THE SHOWRUNNER</h2>
+        <p>
+            One accidentally ingenious Nykaa ad campaign
+            for a college assignment and I had to make
+            sure it wasn’t an accident. I began
+            experimenting with marketing and designing
+            experiences. So I started blowing up music
+            shows for my musician friends.
+        </p>
+
+        <ul>
+            <li><img src="Images/ABOUT_ME/ICON.png" class="icon">Cross-platform coherence</li>
+            <li><img src="Images/ABOUT_ME/ICON.png" class="icon">Identity creation</li>
+            <li><img src="Images/ABOUT_ME/ICON.png" class="icon">Brand voice definition</li>
+            <li><img src="Images/ABOUT_ME/ICON.png" class="icon">Audience segmentation</li>
+            <li><img src="Images/ABOUT_ME/ICON.png" class="icon">Brand Naming</li>
+            <li><img src="Images/ABOUT_ME/ICON.png" class="icon">Narrative Foundations</li>
+        </ul>
+    </div>
+
+    <div class="col-md-6">
+        <img src="Images/ABOUT_ME/SLIDE_03.png" width="100%" alt="">
+    </div>
+</div>
+
+
+<!-- 4 — MAD WOMAN -->
+<div class="row row_04">
+    <div class="col-md-6">
+        <img src="Images/ABOUT_ME/SLIDE_04.png" width="100%" alt="">
+    </div>
+
+    <div class="col-md-6">
+        <h2>THE MAD (WO)MAN</h2>
+        <p>
+            It’s official. OneFourSeven made me a woman in
+            marketing. All the creative writing, lateral
+            thinking, obsession with creating workflows,
+            the ADHD–it all found a home: Marketing. With
+            an MBA degree by my side, I can now create
+            sticky, expandable ideas, understand consumers
+            and competition and ensure my creativity
+            drives profit
+        </p>
+
+        <ul>
+            <li><img src="Images/ABOUT_ME/GREEN_ICON.png" class="icon">Insight mining</li>
+            <li><img src="Images/ABOUT_ME/GREEN_ICON.png" class="icon">Campaign architecture</li>
+            <li><img src="Images/ABOUT_ME/GREEN_ICON.png" class="icon">Category analysis</li>
+            <li><img src="Images/ABOUT_ME/GREEN_ICON.png" class="icon">Audience segmentation</li>
+            <li><img src="Images/ABOUT_ME/GREEN_ICON.png" class="icon">Decision-making with data</li>
+            <li><img src="Images/ABOUT_ME/GREEN_ICON.png" class="icon">Performance-focused
+                storytelling</li>
+            <li><img src="Images/ABOUT_ME/GREEN_ICON.png" class="icon">competitor mapping</li>
+            <li><img src="Images/ABOUT_ME/GREEN_ICON.png" class="icon">Brand positioning
+                refinement</li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+
+
+
+<script src="bs/js/jquery.js"></script>
+<script>
+    var $jq = jQuery.noConflict();
+</script>
+<script src="bs/js/popper.js"></script>
+<script src="bs/js/bootstrap.js"></script>
+<script src="bs/js/mdb.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="Images/Logos/favicon.svg">
+  <link rel="stylesheet" href="bs/css/bootstrap.css">
+  <link rel="stylesheet" href="bs/css/mdb.css">
+  <link rel="stylesheet" href="bs/css/style.css">
+
+  <title>Parishka | Hilti</title>
+
+  <style>
+    /* ------------------------- FONTS ------------------------- */
+    @font-face {
+      font-family: "Anton";
+      src: url("Images/Fonts/Anton-Regular.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: "Patrick Hand";
+      src: url("Images/Fonts/PatrickHand-Regular.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: "Point Blank";
+      src: url("Images/Fonts/PointBlank.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: "Ubuntu Mono_R";
+      src: url("Images/Fonts/UbuntuMono-Regular.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: "Ubuntu Mono_B";
+      src: url("Images/Fonts/UbuntuMono-Bold.ttf") format("truetype");
+    }
+
+    /* ------------------------- GLOBAL ------------------------- */
+    html, body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Anton', sans-serif;
+      color: #eeecec;
+      overflow-x: hidden;      /* kill horizontal scroll everywhere */
+    }
+
+    /* ------------------------- HERO IMAGE ------------------------- */
+    .hero-image img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ------------------------- LEFT STRIP ------------------------- */
+    .left-strip {
+      background: white;
+      border-right: 3px solid #ce931d;
+      overflow: hidden;
+      position: relative;
+      height: 100%;
+      background-image: linear-gradient(#ce931d 5px, transparent 5px);
+      background-size: 100% 100px;
+      background-repeat: repeat-y;
+      width: 100px;
+      min-width: 100px;
+      max-width: 100px;
+    }
+
+
+
+    /* ------------------------- FLOATING PLAYER ------------------------- */
+    .player-floating {
+      position: fixed;
+      bottom: 50px;
+      width: 100px;
+    }
+    .player-floating img {
+      width: 100%;
+    }
+
+    /* ------------------------- CONTENT ------------------------- */
+    .case-wrapper {
+      display: grid;
+      grid-template-columns: 100px auto;
+      width: 100%;
+    }
+
+    .case-content {
+      width: 100%;
+      max-width: calc(100vw - 100px); /* subtract strip width */
+      overflow-x: hidden;
+      padding: 50px 50px !important;
+      background: #ce931d !important;
+      margin: 0 auto;
+    }
+
+
+
+    .case-content img {
+      width: 100%;
+      margin: 20px 0;
+      display: block;
+    }
+
+    /* ------------------------- TYPOGRAPHY ------------------------- */
+    h1, h2 {
+      font-family: 'Anton';
+      margin: 25px 0;
+      font-size: 60px !important;
+      line-height: 0.5;
+    }
+    p {
+      font-family: 'Ubuntu Mono_R';
+      font-size: 20px !important;
+
+    }
+
+    /* ------------------------- SPACING CLASSES ------------------------- */
+    .margin_below { margin-bottom: 45px !important; }
+    .icons_padding { padding: 40px;}
+    .table_icons { height: 70px !important;
+      width: auto !important;}
+    .big_idea { padding: 80px !important; }
+    .naming { padding: 50px; }
+
+
+    .foundation {
+      position: relative;
+      padding: 0 30px; /* safe padding */
+    }
+
+    /* vertical line on all except last */
+    .foundation:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: #fff; /* white line */
+    }
+
+
+
+
+    /* ------------------------- NEXT SECTION ------------------------- */
+    .next-section {
+      background: #ce931d;
+      padding-top: 20px;
+      padding-bottom: 0px;
+      padding-right: 40px;
+      padding-left: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 3px solid #fff;
+    }
+    .next-text {
+      font-size: 45px;
+      font-family: 'Anton';
+    }
+    .next-icons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0px !important;
+    }
+    .next-icons img {
+      width: 100px;
+      height: auto;
+    }
+
+    .portfolio-title {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      z-index: 999999;
+
+      font-family: 'Anton', sans-serif;
+      font-size: 40px;
+      color: #ffffff;
+      text-decoration: none;
+      line-height: 1;
+
+      background: #ce931d;           /* 🔴 solid red box */
+      padding: 8px 8px;
+      border-radius: 0px;
+
+    }
+
+    .portfolio-title:hover {
+      opacity: 0.9;
+    }
+
+    /* smooth animation */
+    .next-icons img {
+      transition: transform 0.25s ease;
+      cursor: pointer;
+    }
+
+    /* hover grows the icon */
+    .next-icons img:hover {
+      transform: scale(1.2);
+    }
+
+    /* click (active state) grows a bit more */
+    .next-icons img:active {
+      transform: scale(1.3);
+    }
+
+    /* Slider wrapper */
+    .slider-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 20px 0;
+    }
+
+    /* Track */
+    .slider-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    /* Each image takes full width */
+    .slider-track img {
+      width: 100%;
+      height: auto;
+      flex-shrink: 0;      /* prevents shrinking */
+      border-radius: 8px;
+    }
+
+    /* Arrow buttons */
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 45px;
+      background: rgba(0,0,0,0.4);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      z-index: 10;
+      border-radius: 6px;
+    }
+
+    .left-btn { left: 10px; }
+    .right-btn { right: 10px; }
+
+    .slider-btn:hover {
+      background: rgba(0,0,0,0.7);
+    }
+
+
+
+
+    @media (min-width: 769px) and (max-width: 1200px) {
+      .left-strip{
+        background-image: linear-gradient(#ce931d 4px, transparent 4px) !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .left-strip{
+        background-image: linear-gradient(#ce931d 2px, transparent 2px) !important;
+      }
+    }
+
+
+  </style>
+
+  <link rel="stylesheet" media="(min-width:769px) and (max-width:1200px)" href="laptop.css">
+
+  <link rel="stylesheet" media="(max-width:768px)" href="mobile.css">
+
+</head>
+<body>
+<div class="portfolio">
+  <a href="index.html" class="portfolio-title">Parishka’s <br> Portfolio</a>
+</div>
+
+<!-- HERO IMAGE -->
+<div class="hero-image">
+  <img src="Images/HILTI/SLIDE_01.png" width="100%">
+</div>
+
+
+<!-- MAIN WRAPPER -->
+<div class="case-wrapper">
+
+  <!-- WHITE STRIP -->
+  <div class="left-strip">
+
+    <!-- FLOATING PLAYER ON STRIP -->
+    <div class="player-floating">
+      <img src="Images/HILTI/PLAYER.png" alt="">
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE CONTENT -->
+  <div class="case-content">
+
+    <div class="margin_below">
+      <h1>ROLE</h1>
+      <p>  Built the entire insight (“superpowers become invisible weights”) <br>
+        Crafted the narrative arc of the campaign <br>
+        Designed symbolic objects metaphor system <br>
+        Developed visual direction + communication flow <br>
+        Wrote the strategic rationale + story logic
+    </div>
+
+    <div class="margin_below">
+      <h1>PROBLEM</h1>
+      <p>         Hilti India wanted a Mother’s Day campaign that went beyond clichés of “supermoms” and
+        sentimental gratitude. The goal was to acknowledge the reality of working mothers instead
+        of glorifying their ability to juggle exhaustion, responsibility, and emotional labour.
+        Most brand campaigns celebrated mothers as limitless, tireless beings. But the truth is
+        that working mothers live days shaped by constant sensory overload- alarms, deadlines,
+        pings, calls, commutes, expectations, all layered on top of the roles they fulfil at home.
+        Hilti wanted a campaign that recognised this reality with honesty, not hero-worship.</p>
+      <div class="row">
+        <div class="col-md-6 row_margin_right">
+          <img src="Images/HILTI/SLIDE_02A.png">
+        </div>
+        <div class="col-md-6 row_margin_right">
+          <img src="Images/HILTI/SLIDE_02B.png">
+        </div>
+      </div>
+    </div>
+
+    <div class="margin_below">
+      <h1>INSIGHT</h1>
+      <img src="Images/HILTI/SLIDE_03.png" class="naming">
+    </div>
+
+    <div class="margin_below">
+      <h1>SOLUTION</h1>
+      <p>
+        We built the narrative around a first-person sensory experience. A day in a working
+        mother’s life unfolds through hyper-real, overwhelming fragments: buzzing alarms, ringing
+        phones, notifications, traffic, jobsite noise, unanswered messages, domestic expectations.
+        The film uses tight close-ups, shaky pacing, sound layering, and contrast cuts to mirror
+        her overstimulated reality.
+        The breakthrough moment comes when she pauses mid-day to take a brief call from her child
+        — an island of calm amid chaos. She returns to work with the same quiet strength she began
+        with, not because she’s expected to be superhuman, but because she has no option not to
+        show up.
+        The campaign doesn’t ask the audience to applaud her “superpowers.”
+        It simply makes them see her.
+      </p>
+      <div class="slider-container">
+
+        <button class="slider-btn left-btn">&#10094;</button>
+
+        <div class="slider-track">
+          <img src="Images/HILTI/SLIDE_04A.png" alt="">
+          <img src="Images/HILTI/SLIDE_04B.png" alt="">
+          <img src="Images/HILTI/SLIDE_04C.png" alt="">
+          <img src="Images/HILTI/SLIDE_04D.png" alt="">
+          <img src="Images/HILTI/SLIDE_04E.png" alt="">
+          <img src="Images/HILTI/SLIDE_04F.png" alt="">
+        </div>
+
+        <button class="slider-btn right-btn">&#10095;</button>
+
+      </div>
+
+    </div>
+
+    <div class="margin_below">
+      <h1>OUTCOME</h1>
+      <p>
+        The concept reframed Mother’s Day for Hilti as an act of recognition, not
+        glorification.
+        It opened internal conversations around empathy, workload, and the hidden
+        pressures carried by women in demanding roles. Externally, it stood out because
+        it refused to romanticize burnout or depict mothers as mythical figures.
+        Instead, it presented a grounded truth:
+        Working mothers navigate noise the world never hears — and the least we can do
+        is pay attention.
+
+      </p>
+
+    </div>
+
+
+
+    <!-- NEXT SECTION -->
+    <div class="next-section">
+      <div class="next-text"><h1>NEXT →</h1></div>
+      <div class="next-icons">
+        <a href="Sarovar.html">
+          <img src="Images/Home_Page/YELLOW_03.png"  alt="">
+        </a>
+        <a href="DaddysHome.html">
+          <img src="Images/Home_Page/YELLOW_01.png" alt="">
+        </a>
+        <a href="BandarGround_M.html">
+          <img src="Images/Home_Page/BLUE_01.png" alt="">
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<script>
+  const track = document.querySelector('.slider-track');
+  const slides = document.querySelectorAll('.slider-track img');
+  const left = document.querySelector('.left-btn');
+  const right = document.querySelector('.right-btn');
+
+  let index = 0;  // current slide
+
+  function updateSlider() {
+    const width = track.clientWidth;
+    track.style.transform = `translateX(-${index * width}px)`;
+  }
+
+  right.addEventListener('click', () => {
+    if (index < slides.length - 1) {
+      index++;
+      updateSlider();
+    }
+  });
+
+  left.addEventListener('click', () => {
+    if (index > 0) {
+      index--;
+      updateSlider();
+    }
+  });
+
+  // Fix slider on window resize
+  window.addEventListener('resize', updateSlider);
+</script>
+
+
+
+<script src="bs/js/jquery.js"></script>
+<script>
+  var $jq = jQuery.noConflict();
+</script>
+<script src="bs/js/popper.js"></script>
+<script src="bs/js/bootstrap.js"></script>
+<script src="bs/js/mdb.js"></script>
+
+
+
+
+</body>
+</html>
+
